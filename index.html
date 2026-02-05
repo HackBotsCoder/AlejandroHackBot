@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es-VE">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HackBotAI MX – Predicciones 1xBet</title>
+  <title>HackBotAI Venezuela – Predicciones 1xBet</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .console-box {
-      font-family: monospace;
+      font-family: 'Courier New', Courier, monospace;
       background-color: #1a1a1a;
       padding: 1rem;
       border-radius: 0.5rem;
@@ -32,125 +32,168 @@
       width: 100%;
     }
     .hidden-screen { display: none; }
+    
+    /* Animación de pulso para el botón importante */
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
+      50% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
+    }
+    .animate-pulse-gold {
+      animation: pulse-gold 2s infinite;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans">
   <div id="loading" class="loading-screen">
-    <p>Iniciando HackBotAI... Espere un momento compa.</p>
+    <div class="text-4xl mb-4">🇻🇪</div>
+    <p class="text-lg animate-pulse">Iniciando HackBotAI... Espérate un pelo, mano.</p>
   </div>
 
   <div id="mainContent" class="hidden-screen">
     <header class="w-full bg-gray-800 p-4 flex justify-between items-center border-b border-green-500">
-      <h1 class="text-xl font-bold text-green-400">HackBotAI México 🇲🇽</h1>
-      <nav class="space-x-4 hidden md:block">
-        <a href="#how" class="hover:text-green-400">Funcionamiento</a>
-        <a href="#games" class="hover:text-green-400">Juegos</a>
-        <a href="#start" class="hover:text-green-400">Empezar</a>
+      <h1 class="text-xl font-bold text-green-400 flex items-center gap-2">
+        HackBotAI Vzla 🇻🇪
+      </h1>
+      <nav class="space-x-4 hidden md:block text-sm">
+        <a href="#how" class="hover:text-green-400 transition">Cómo funciona</a>
+        <a href="#games" class="hover:text-green-400 transition">Juegos</a>
+        <a href="#start" class="hover:text-green-400 transition">Activar</a>
       </nav>
     </header>
 
-    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
-      <h2 class="text-3xl md:text-5xl font-bold mb-6">
-        Gana lana real con predicciones de IA para 1xBet
+    <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center py-10">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+        Gana <span class="text-green-500">burda e' plata</span> con IA para 1xBet
       </h2>
 
-      <div class="mb-4 text-lg font-semibold text-yellow-300">
-        👋 ¡Bienvenido al canal oficial de <span class="text-green-400">Alejandro Valencia</span> para México!
+      <div class="mb-4 text-lg font-semibold text-yellow-300 bg-gray-800 px-4 py-2 rounded-full border border-yellow-500">
+        👋 ¡Bienvenido al canal oficial de <span class="text-green-400">Alejandro Valencia</span> para Venezuela!
       </div>
 
-      <p class="max-w-xl mb-8 text-gray-300">
-        HackBotAI utiliza algoritmos avanzados para hackear las probabilidades en Aviator, Mines y Penalty. ¡98% de efectividad comprobada!
+      <p class="max-w-xl mb-8 text-gray-300 text-base md:text-lg">
+        Nuestro bot utiliza algoritmos avanzados para romper las probabilidades en Aviator, Mines y Penalty. <br>
+        <span class="text-white font-bold">¡98% de efectividad confirmada por los panas!</span>
       </p>
 
-      <input id="userId" type="text" placeholder="Ingresa tu ID de 1xBet" class="bg-gray-700 text-white p-3 rounded-md mb-4 text-center border-2 border-transparent focus:border-green-400 outline-none" />
+      <div class="w-full max-w-md">
+        <label class="text-left text-sm text-gray-400 mb-1 block pl-1">ID de Usuario 1xBet:</label>
+        <input id="userId" type="number" placeholder="Ej: 49210022" class="w-full bg-gray-700 text-white p-4 rounded-xl mb-4 text-center text-xl font-mono border-2 border-transparent focus:border-green-400 outline-none transition shadow-lg" />
+        
+        <button id="connectButton" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-4 px-10 rounded-xl text-lg transition transform hover:scale-105 shadow-xl">
+          CONECTAR CUENTA
+        </button>
+      </div>
 
-      <button id="connectButton" class="bg-green-500 hover:bg-green-600 text-black font-bold py-3 px-10 rounded-xl text-lg transition transform hover:scale-105">
-        CONECTAR CUENTA
-      </button>
-
-      <div id="connectionSuccess" class="hidden text-green-400 font-bold mt-6">
-        <p>✅ ID: <span id="accountIdDisplay">1234567890</span> conectado!</p>
-        <p>Status: Servidor México Activo | Algoritmo al 100%</p>
-        <button id="getSignalButton" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition mt-4 animate-bounce">
+      <div id="connectionSuccess" class="hidden text-green-400 font-bold mt-6 bg-gray-800 p-4 rounded-xl border border-green-500/30 w-full max-w-md animate-fade-in-up">
+        <p class="text-lg">✅ ID: <span id="accountIdDisplay" class="font-mono text-white"></span> conectado!</p>
+        <div class="h-px bg-gray-600 my-2"></div>
+        <p class="text-sm text-gray-400">Status: <span class="text-green-400">Servidor Caracas Activo</span> | Algoritmo 100%</p>
+        
+        <button id="getSignalButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-lg transition mt-4 shadow-lg border-b-4 border-blue-800 active:border-b-0 active:translate-y-1">
           OBTENER SEÑAL AHORA
         </button>
       </div>
 
-      <div id="errorBox" class="hidden bg-red-600 p-6 rounded-xl max-w-md mx-auto mt-6 border-2 border-white">
-        <h2 class="text-xl font-bold mb-2">⚠️ SALDO INSUFICIENTE</h2>
-        <p class="mb-4">Para activar el HackBotAI, tu cuenta debe estar activa. Realiza un depósito mínimo de <strong>$120 MXN o más</strong> para validar tu ID y desbloquear las señales VIP.</p>
+      <div id="errorBox" class="hidden bg-gray-800 p-6 rounded-xl max-w-md mx-auto mt-8 border-2 border-red-500 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-red-500"></div>
+        <h2 class="text-2xl font-bold mb-2 text-red-500 flex items-center justify-center gap-2">
+          ⚠️ SALDO INSUFICIENTE
+        </h2>
+        <p class="mb-6 text-gray-300 leading-relaxed">
+          Mano, para activar el HackBotAI tu cuenta debe estar activa y verificada. Realiza un depósito mínimo de <strong>2500 Bs. (o $5)</strong> para validar tu ID y desbloquear las señales VIP.
+        </p>
 
-        <a href="https://reffpa.com/L?tag=d_2911869m_14203c_&site=2911869&ad=14203" target="_blank" id="depositButton" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition">
-          DEPOSITAR EN 1XBET MÉXICO
+        <a href="https://reffpa.com/L?tag=d_4691520m_22807c_&site=4691520&ad=22807&r=registration" target="_blank" id="depositButton" class="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-xl transition text-lg animate-pulse-gold uppercase tracking-wide">
+          DEPOSITAR EN 1XBET VZLA
         </a>
 
-        <div class="mt-6 bg-black text-white p-4 rounded-lg font-bold text-center">
-          <div class="mb-1 text-lg">CÓDIGO PROMOCIONAL: <span class="text-green-400">Pedro777</span></div>
-          <div class="text-xs opacity-75 italic">Usa este código al registrarte para duplicar tu primer depósito.</div>
+        <div class="mt-6 bg-black/50 text-white p-4 rounded-lg border border-gray-600">
+          <div class="mb-1 text-lg font-bold">CÓDIGO PROMO: <span class="text-green-400 select-all">DMH55</span></div>
+          <div class="text-xs opacity-75 italic">Usa este código al registrarte para duplicar tu primer depósito al 100%.</div>
         </div>
       </div>
     </section>
 
-    <section class="bg-gray-800 py-12 px-6 text-center">
-      <h3 class="text-2xl font-bold text-green-400 mb-6">Ganadores de hoy en México 🇲🇽</h3>
-      <div class="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto text-sm text-green-300 font-mono">
-        <p>👤 ID: 4518**** – $12,300 MXN</p>
-        <p>👤 ID: 9912**** – $8,500 MXN</p>
-        <p>👤 ID: 3099**** – $15,120 MXN</p>
-        <p>👤 ID: 1187**** – $6,400 MXN</p>
-        <p>👤 ID: 4412**** – $22,850 MXN</p>
-        <p>👤 ID: 8283**** – $9,200 MXN</p>
+    <section class="bg-gray-800 py-12 px-6 text-center border-t border-gray-700">
+      <h3 class="text-2xl font-bold text-green-400 mb-8">🔥 Ganadores de hoy en Venezuela</h3>
+      <div class="grid md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto text-sm font-mono">
+        <div class="bg-gray-900 p-3 rounded flex justify-between items-center border border-gray-700">
+          <span class="text-gray-400">👤 ID: 4518****</span>
+          <span class="text-green-400 font-bold">+ 12,500 Bs.</span>
+        </div>
+        <div class="bg-gray-900 p-3 rounded flex justify-between items-center border border-gray-700">
+          <span class="text-gray-400">👤 ID: 9912****</span>
+          <span class="text-green-400 font-bold">+ 8,500 Bs.</span>
+        </div>
+        <div class="bg-gray-900 p-3 rounded flex justify-between items-center border border-gray-700">
+          <span class="text-gray-400">👤 ID: 3099****</span>
+          <span class="text-green-400 font-bold">+ 25,120 Bs.</span>
+        </div>
+        <div class="bg-gray-900 p-3 rounded flex justify-between items-center border border-gray-700">
+          <span class="text-gray-400">👤 ID: 1187****</span>
+          <span class="text-green-400 font-bold">+ 6,400 Bs.</span>
+        </div>
       </div>
     </section>
 
-    <section id="games" class="bg-gray-800 py-12 px-6 text-center">
-      <h3 class="text-2xl font-bold text-green-400 mb-6">Juegos con Hack Disponible</h3>
+    <section id="games" class="bg-gray-900 py-12 px-6 text-center">
+      <h3 class="text-2xl font-bold text-green-400 mb-8">Juegos Hackeados Disponibles</h3>
       <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="bg-gray-700 p-6 rounded-xl border border-gray-600">
-          <h4 class="text-xl font-bold mb-2">✈️ Aviator</h4>
-          <p class="text-gray-300 italic">"Retiro garantizado antes del crash."</p>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition cursor-default">
+          <div class="text-4xl mb-4">✈️</div>
+          <h4 class="text-xl font-bold mb-2">Aviator</h4>
+          <p class="text-gray-400 text-sm">"Saca la plata antes de que el avión se vaya."</p>
         </div>
-        <div class="bg-gray-700 p-6 rounded-xl border border-gray-600">
-          <h4 class="text-xl font-bold mb-2">💣 Mines</h4>
-          <p class="text-gray-300 italic">"Mapeo de estrellas sin bombas."</p>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition cursor-default">
+          <div class="text-4xl mb-4">💣</div>
+          <h4 class="text-xl font-bold mb-2">Mines</h4>
+          <p class="text-gray-400 text-sm">"Te decimos dónde están las estrellas sin explotar."</p>
         </div>
-        <div class="bg-gray-700 p-6 rounded-xl border border-gray-600">
-          <h4 class="text-xl font-bold mb-2">⚽ Penalty</h4>
-          <p class="text-gray-300 italic">"Goles directos al ángulo."</p>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-green-500 transition cursor-default">
+          <div class="text-4xl mb-4">⚽</div>
+          <h4 class="text-xl font-bold mb-2">Penalty</h4>
+          <p class="text-gray-400 text-sm">"Goles asegurados directo al ángulo."</p>
         </div>
       </div>
     </section>
 
-    <footer class="text-center text-gray-500 text-sm py-8 bg-black">
-      <p>© 2026 HackBotAI México. Todos los derechos reservados.</p>
-      <p class="text-xs mt-2">Juega con responsabilidad. Solo para mayores de 18 años.</p>
+    <footer class="text-center text-gray-500 text-sm py-8 bg-black border-t border-gray-800">
+      <p>© 2026 HackBotAI Venezuela. Todos los derechos reservados.</p>
+      <p class="text-xs mt-2 text-gray-600">Juega responsablemente mano. Solo mayores de 18 años.</p>
     </footer>
   </div>
 
   <script>
+    // Simulación de carga
     setTimeout(() => {
       document.getElementById("loading").classList.add("hidden-screen");
       document.getElementById("mainContent").classList.remove("hidden-screen");
-    }, 2500);
+    }, 2000);
 
+    // Lógica del botón conectar
     document.getElementById("connectButton").addEventListener("click", () => {
       const userId = document.getElementById("userId").value;
-      if (userId.length > 4) {
-        document.getElementById("connectButton").innerText = "CONECTANDO...";
+      const btn = document.getElementById("connectButton");
+      
+      if (userId.length > 5) {
+        btn.innerHTML = '<span class="animate-pulse">CONECTANDO CON EL SERVIDOR...</span>';
+        btn.classList.add("cursor-not-allowed", "opacity-75");
+        
         setTimeout(() => {
-            document.getElementById("connectButton").classList.add("hidden");
-            document.getElementById("userId").classList.add("hidden");
+            btn.parentElement.classList.add("hidden"); // Ocultar input y botón original
             document.getElementById("accountIdDisplay").innerText = userId;
             document.getElementById("connectionSuccess").classList.remove("hidden");
         }, 1500);
       } else {
-        alert("Por favor ingresa un ID válido de 1xBet");
+        alert("Epa chamo, ingresa un ID válido de 1xBet (mínimo 6 dígitos)");
       }
     });
 
+    // Lógica del botón obtener señal
     document.getElementById("getSignalButton").addEventListener("click", () => {
-      document.getElementById("errorBox").classList.remove("hidden");
-      window.scrollTo({ top: document.getElementById("errorBox").offsetTop - 50, behavior: 'smooth' });
+      const errorBox = document.getElementById("errorBox");
+      errorBox.classList.remove("hidden");
+      errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   </script>
 </body>
